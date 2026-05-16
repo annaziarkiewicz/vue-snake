@@ -56,7 +56,6 @@ import { computed } from 'vue'
 import GameScreenAuthor from '@/components/GameScreenAuthor.vue'
 
 const props = defineProps<{
-    hasIllustrations: boolean,
     gameHeadline: string,
     buttonPlayGame?: boolean,
     buttonBackToGame?: boolean,

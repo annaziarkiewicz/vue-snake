@@ -50,7 +50,6 @@
 			:button-how-to-play="true"
 			:button-play-game="!hasActiveGame"
 			:game-headline="gameHeadline"
-			:has-illustrations="hasIllustrations"
 			@back-to-game="backToGame"
 			@play-game="playGame"
 			@show-high-scores="showHighScores"
@@ -120,7 +119,6 @@ const gameState = ref<{
 	overlay: null,
 	paused: true
 })
-const hasIllustrations = ref(true)
 const hasActiveGame = ref(false)
 const gameBoardKey = ref(0)
 const isGameFrozen = ref(false)

@@ -77,7 +77,7 @@ const scores = computed(() => getScores())
 	ul {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 10px;
 	}
 
 	li {
@@ -122,6 +122,7 @@ const scores = computed(() => getScores())
 		display: flex;
 		justify-content: center;
 		align-items: center;
+        flex-shrink: 0;
 		background: $color-milk-300;
 		border-radius: 8px;
 		font-size: 15px;
@@ -130,10 +131,14 @@ const scores = computed(() => getScores())
 	}
 
 	&__name {
+        overflow: hidden;
+        min-width: 0;
 		flex-grow: 1;
 		font-size: 18px;
 		color: $color-milk-300;
 		text-transform: uppercase;
+        text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
 	&__points {
