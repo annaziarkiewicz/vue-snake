@@ -8,6 +8,7 @@
 				ref="gameInputRef"
 				v-model="name"
 				type="text"
+				:maxlength="maxLength"
 				:placeholder="placeholder"
 				@keydown.enter="submit"
 				@keydown.stop
@@ -26,16 +27,20 @@ defineProps<{
 	placeholder: string
 }>()
 
-const name = ref('')
 const gameInputRef = ref<HTMLInputElement | null>(null)
+const name = ref('')
+const maxLength = 45
 
 onMounted(() => {
 	gameInputRef.value?.focus()
 })
 
 const submit = () => {
-	if (!name.value.trim()) return
-	emit('submit', name.value.trim())
+	const nameTrimmed = name.value.trim().slice(0, maxLength)
+
+	if (!nameTrimmed) return
+
+	emit('submit', nameTrimmed)
 }
 
 const handleClose = () => {
@@ -76,9 +81,9 @@ const handleClose = () => {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 50%;
 		cursor: pointer;
 		background: $color-milk-200;
+		border-radius: 50%;
 		color: $color-milk-500;
 
 		&:hover {
@@ -103,6 +108,7 @@ const handleClose = () => {
 			font-size: 24px;
 			font-weight: 500;
 			line-height: 1em;
+            text-align: center;
 
 			&::placeholder {
 				font-weight: 400;
