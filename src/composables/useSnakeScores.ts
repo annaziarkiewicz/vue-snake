@@ -1,21 +1,21 @@
-type scoreItem = {
+type ScoreItem = {
+	date: number
 	name: string
 	score: number
-	level: number
-	date: number
 }
 
 export const useSnakeScores = () => {
 	const storageKey = 'vue-snake'
 	const maxItems = 8
 
-	const getScores = (): scoreItem[] => {
+	const getScores = (): ScoreItem[] => {
 		try {
 			const raw = localStorage.getItem(storageKey)
-			const data: scoreItem[] = raw ? JSON.parse(raw) : []
+			const data: ScoreItem[] = raw ? JSON.parse(raw) : []
 
 			return data.sort((a, b) => {
 				if (b.score !== a.score) return b.score - a.score
+
 				return a.date - b.date
 			})
 		} catch {
@@ -23,7 +23,7 @@ export const useSnakeScores = () => {
 		}
 	}
 
-	const saveScores = (list: scoreItem[]) => {
+	const saveScores = (list: ScoreItem[]) => {
 		localStorage.setItem(storageKey, JSON.stringify(list))
 	}
 
@@ -33,15 +33,16 @@ export const useSnakeScores = () => {
 		if (list.length < maxItems) return true
 
 		const last = list[list.length - 1]
+
 		if (!last) return true
 
 		return score > last.score
 	}
 
-	const addScore = (item: { name: string; score: number; level: number }) => {
+	const addScore = (item: { name: string; score: number }) => {
 		const list = getScores()
 
-		const next: scoreItem[] = [
+		const next: ScoreItem[] = [
 			...list,
 			{
 				...item,
@@ -52,6 +53,7 @@ export const useSnakeScores = () => {
 		const sorted = next
 			.sort((a, b) => {
 				if (b.score !== a.score) return b.score - a.score
+
 				return a.date - b.date
 			})
 			.slice(0, maxItems)
@@ -60,9 +62,9 @@ export const useSnakeScores = () => {
 	}
 
 	return {
-		maxItems,
-		getScores,
 		addScore,
-		isHighScore
+		getScores,
+		isHighScore,
+		maxItems
 	}
 }

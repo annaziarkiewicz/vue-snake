@@ -25,7 +25,9 @@
 import { computed } from 'vue'
 import { useSnakeScores } from '@/composables/useSnakeScores'
 
-const emit = defineEmits(['close'])
+const emit = defineEmits<{
+	(e: 'close'): void
+}>()
 
 const { getScores, maxItems } = useSnakeScores()
 
