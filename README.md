@@ -1,6 +1,6 @@
 # Vue.js Snake
 
-## Screenshot
+## Screenshots
 
 ![Vue.js Snake welcome screen](https://raw.githubusercontent.com/annaziarkiewicz/vue-snake/refs/heads/main/screenshot-1.png)
 ![Vue.js Snake game screenshot](https://raw.githubusercontent.com/annaziarkiewicz/vue-snake/refs/heads/main/screenshot-2.png)
