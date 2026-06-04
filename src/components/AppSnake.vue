@@ -8,12 +8,12 @@
 
 		<GameBoard
 			:key="gameBoardKey"
-			:actionDelay="gameActionDelay"
-			:isLifeLost="gameState.overlay === 'lifeLost'"
+			:action-delay="gameActionDelay"
+			:is-life-lost="gameState.overlay === 'lifeLost'"
 			:lives="lives"
-			:mapName="currentMap"
+			:map-name="currentMap"
 			:paused="gameState.paused || isGameFrozen"
-			:isFrozen="isGameFrozen"
+			:is-frozen="isGameFrozen"
 			:score="score"
 			@life-lost="onLifeLost"
 			@lost="onLost"
@@ -210,7 +210,6 @@ const onScoreSubmit = (name: string) => {
 	addScore({
 		name,
 		score: score.value.current,
-		level: level.value
 	})
 
 	gameState.value.overlay = null
